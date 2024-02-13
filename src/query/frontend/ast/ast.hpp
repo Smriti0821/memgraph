@@ -1323,7 +1323,7 @@ class Function : public memgraph::query::Expression {
   Function(const std::string &function_name, const std::vector<Expression *> &arguments)
       : arguments_(arguments), function_name_(function_name), function_(NameToFunction(function_name_)) {
     if (!function_) {
-      throw SemanticException("Function '{}' doesn't exist.", function_name);
+      throw SemanticException("Function '" + function_name + "' doesn't exist.");
     }
   }
 
