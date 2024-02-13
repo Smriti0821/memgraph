@@ -3540,7 +3540,9 @@ class Exists : public memgraph::query::Expression {
   DEFVISITABLE(ExpressionVisitor<void>);
   bool Accept(HierarchicalTreeVisitor &visitor) override {
     if (visitor.PreVisit(*this)) {
-      pattern_->Accept(visitor);
+        if (pattern_) {
+            pattern_->Accept(visitor);
+        }
     }
     return visitor.PostVisit(*this);
   }
